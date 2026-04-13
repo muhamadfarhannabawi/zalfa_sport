@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zalfa Sport | High-End Air Rifle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base & Reset --- */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: #020617; 
+            color: #ffffff; 
+            overflow-x: hidden; 
+        }
+        .font-sync { font-family: 'Syncopate', sans-serif; }
+        
+        /* --- Reveal Animation --- */
+        .reveal { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .reveal.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        /* --- Glassmorphism Card --- */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-5px);
+        }
+
+        /* --- Navigasi Glass Effect --- */
+        .nav-glass { 
+            background: rgba(2, 6, 23, 0.95) !important; 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        /* --- Hero Background Gambar Toko --- */
+        #home {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('img/foto3.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+        }
+
+        /* Overlay Gelap agar teks terbaca */
+        #home::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-premium { 
+            background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%); 
+            transition: all 0.3s ease;
+        }
+        .btn-premium:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transform: scale(1.02);
+        }
+
+        /* --- Menu Mobile --- */
+        #mobile-menu {
+            position: fixed;
+            inset: 0;
+            background-color: #020617;
+            z-index: 150;
+            display: none;
+            flex-direction: column;
+            padding: 100px 24px 24px 24px;
+        }
+        #mobile-menu.active { display: flex; }
+    </style>
+</head>
+<body>
+
+    <nav id="main-nav" class="fixed w-full py-6 px-6 z-[200] transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-xl font-sync tracking-[0.3em] text-yellow-500 relative z-[210]">
+                ZALFA<span class="text-white">SPORT</span>
+            </div>
+
+            <ul class="hidden lg:flex space-x-10 items-center text-[11px] font-bold uppercase tracking-[0.2em]">
+                <li><a href="#home" class="hover:text-yellow-500 transition text-white">Beranda</a></li>
+                <li><a href="senapan.html" class="hover:text-yellow-500 transition text-white">Koleksi</a></li>
+                <li>
+                    <a href="edukasi.html" class="flex items-center hover:text-yellow-500 transition text-white">
+                        Edukasi <span class="ml-2 bg-yellow-500 text-[9px] text-slate-900 px-2 py-0.5 rounded-full font-black animate-pulse">PRO</span>
+                    </a>
+                </li>
+                <li><a href="https://wa.me/628..." class="btn-premium text-white px-8 py-2.5 rounded-full font-black">Kontak</a></li>
+            </ul>
+
+            <button id="menu-btn" class="lg:hidden text-2xl text-yellow-500 focus:outline-none relative z-[210] p-2">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden overflow-y-auto">
+        <ul class="space-y-6">
+            <li><a href="#home" class="mobile-link block text-2xl font-bold border-b border-slate-800 pb-2 text-white">Beranda</a></li>
+            <li>
+                <button id="katalog-toggle" class="w-full flex justify-between items-center text-2xl font-bold text-yellow-500 py-2 focus:outline-none uppercase">
+                    Katalog Produk
+                    <i class="fas fa-plus text-sm" id="katalog-icon"></i>
+                </button>
+                <ul id="katalog-list" class="hidden flex-col space-y-4 mt-4 pl-4 border-l-2 border-yellow-500/20 text-white">
+                    <li><a href="senapan.html" class="mobile-link block text-xl py-1">Senapan Angin</a></li>
+                    <li><a href="mimis.html" class="mobile-link block text-xl py-1">Mimis</a></li>
+                    <li><a href="sparepart.html" class="mobile-link block text-xl py-1">Sparepart</a></li>
+                    <li><a href="aksesoris.html" class="mobile-link block text-xl py-1">Aksesories</a></li>
+                    <li><a href="teleskop.html" class="mobile-link block text-xl py-1">Teleskop</a></li>
+                </ul>
+            </li>
+            <li><a href="edukasi.html" class="mobile-link block text-2xl font-bold text-white border-b border-slate-800 pb-2">Edukasi</a></li>
+            <li><a href="tentang_kami.html" class="mobile-link block text-2xl font-bold text-white border-b border-slate-800 pb-2">Tentang Kami</a></li>
+            <li class="pt-6">
+                <a href="https://wa.me/628..." class="block btn-premium text-white text-center py-4 rounded-2xl font-black uppercase text-lg shadow-lg">WhatsApp Kami</a>
+            </li>
+        </ul>
+    </div>
+
+    <header id="home" class="px-6 text-center">
+        <div class="reveal relative z-10 active">
+            <span class="inline-block px-5 py-1.5 border border-yellow-500/30 rounded-full text-[10px] font-bold tracking-[0.4em] text-yellow-500 uppercase mb-8 backdrop-blur-md">Ultimate Engineering</span>
+            <h1 class="text-5xl md:text-[100px] font-sync font-bold mb-6 leading-none uppercase tracking-tighter text-white text-glow">
+                PRECISION<br><span class="text-yellow-500">MASTERED</span>
+            </h1>
+            <p class="max-w-2xl mx-auto mb-12 text-lg md:text-xl font-light leading-relaxed text-slate-200">
+                Menghadirkan unit senapan angin kelas dunia dengan akurasi yang telah teruji secara teknis untuk performa tanpa kompromi.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="senapan.html" class="btn-premium text-white px-12 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl">Eksplor Koleksi</a>
+                <a href="edukasi.html" class="border-2 border-white/20 text-white hover:border-yellow-500 hover:text-yellow-500 px-12 py-4 rounded-2xl font-bold uppercase tracking-widest text-sm transition duration-300 backdrop-blur-sm">Zalfa Academy</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-32 container mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-card p-12 rounded-[2.5rem] reveal">
+                <div class="w-16 h-16 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-2xl mb-8 border border-yellow-500/20">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 uppercase font-sync text-white tracking-tight">Match Grade</h3>
+                <p class="text-slate-400 leading-relaxed">Setiap unit melewati tahap tuning manual profesional untuk memastikan deviasi FPS minimum.</p>
+            </div>
+
+            <div class="glass-card p-12 rounded-[2.5rem] reveal" style="transition-delay: 150ms;">
+                <div class="w-16 h-16 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-2xl mb-8 border border-yellow-500/20">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 uppercase font-sync text-white tracking-tight">Garansi Resmi</h3>
+                <p class="text-slate-400 leading-relaxed">Dukungan purna jual penuh dan ketersediaan suku cadang original untuk menjaga kondisi unit tetap prima.</p>
+            </div>
+
+            <div class="glass-card p-12 rounded-[2.5rem] reveal" style="transition-delay: 300ms;">
+                <div class="w-16 h-16 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-2xl mb-8 border border-yellow-500/20">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 uppercase font-sync text-white tracking-tight">Academy PRO</h3>
+                <p class="text-slate-400 leading-relaxed">Akses eksklusif ke modul perawatan mendalam dan teknik menembak jarak jauh untuk pemilik unit.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 bg-black/90 border-t border-white/10 text-center px-6">
+        <p class="text-yellow-500 font-sync text-sm tracking-[0.6em] mb-10">ZALFA SPORT</p>
+        <div class="flex justify-center gap-10 text-white/50 mb-12">
+            <a href="#" class="hover:text-yellow-500 transition text-2xl"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-yellow-500 transition text-2xl"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="hover:text-yellow-500 transition text-2xl"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p class="text-gray-600 text-[10px] uppercase font-bold tracking-[0.4em]">© 2026 Zalfa Sport International. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const mainNav = document.getElementById('main-nav');
+            const katalogToggle = document.getElementById('katalog-toggle');
+
+            // Toggle Mobile Menu
+            menuBtn.addEventListener('click', () => {
+                const isActive = mobileMenu.classList.toggle('active');
+                mobileMenu.classList.toggle('hidden');
+                menuIcon.className = isActive ? 'fas fa-times' : 'fas fa-bars';
+                document.body.style.overflow = isActive ? 'hidden' : 'auto';
+            });
+
+            // Close menu on link click
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.className = 'fas fa-bars';
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Toggle Katalog
+            katalogToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const list = document.getElementById('katalog-list');
+                const icon = document.getElementById('katalog-icon');
+                list.classList.toggle('hidden');
+                icon.classList.toggle('fa-plus');
+                icon.classList.toggle('fa-minus');
+            });
+
+            // Navbar Scroll Effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    mainNav.classList.add('nav-glass');
+                } else {
+                    mainNav.classList.remove('nav-glass');
+                }
+            });
+
+            // Scroll Animation Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active'); 
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

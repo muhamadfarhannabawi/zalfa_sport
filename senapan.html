@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Senapan | Zalfa Sport</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .product-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .product-card:hover { transform: translateY(-10px); }
+        .product-card:hover img { transform: scale(1.05); }
+        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); }
+        .card-gradient { background: linear-gradient(145deg, #1e293b, #0f172a); }
+        /* Animasi masuk */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade { animation: fadeIn 0.6s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-slate-950 text-white">
+
+    <nav class="fixed w-full z-50 glass border-b border-white/5 py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-sm font-bold text-yellow-500 hover:text-white transition flex items-center group">
+                <i class="fas fa-arrow-left mr-2 transition-transform group-hover:-translate-x-1"></i> KEMBALI
+            </a>
+            <div class="text-lg font-black tracking-widest uppercase">
+                KATALOG <span class="text-yellow-500">SENAPAN</span>
+            </div>
+            <div class="hidden md:block text-[10px] font-bold text-gray-500 tracking-[0.3em]">
+                PREMIUM AIR RIFLE
+            </div> 
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-16 px-6 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-yellow-500/5 blur-[120px] rounded-full"></div>
+        <div class="relative z-10 animate-fade">
+            <h2 class="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter">PILIHAN <span class="text-yellow-500">UNIT TERBAIK</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto italic text-sm md:text-base border-l-2 border-yellow-500/30 pl-4">
+                Unit pilihan dengan akurasi yang sudah teruji di lapangan. Siap kirim ke seluruh Indonesia.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <div class="product-card group card-gradient border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-yellow-500/50 shadow-2xl animate-fade" style="animation-delay: 0.1s;">
+                <div class="relative h-64 bg-slate-800/50 p-6 flex items-center justify-center">
+                    <img src="img/foto1.jpg" alt="Zalfa Predator" class="w-full h-full object-contain transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/1e293b/eab308?text=Predator+V1'">
+                    <div class="absolute top-6 left-6 bg-yellow-500 text-slate-900 text-[9px] font-black px-3 py-1 rounded-lg uppercase shadow-lg">Best Seller</div>
+                </div>
+                <div class="p-8">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-500 transition">Zalfa Predator V1 - Tactical</h3>
+                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">Tabung dural 7075, laras baja pilihan 60cm. Akurasi grouping rapat di 50 meter.</p>
+                    <div class="flex justify-between items-center border-t border-white/5 pt-6">
+                        <div>
+                            <p class="text-[9px] text-gray-500 uppercase font-black mb-1">Harga Unit</p>
+                            <p class="text-xl font-black text-yellow-500 font-mono tracking-tighter">Rp 4.500.000</p>
+                        </div>
+                        <a href="https://wa.me/628123456789" class="bg-yellow-500 text-slate-900 w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card group card-gradient border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-yellow-500/50 shadow-2xl animate-fade" style="animation-delay: 0.2s;">
+                <div class="relative h-64 bg-slate-800/50 p-6 flex items-center justify-center">
+                    <img src="img/ghost-warrior.png" alt="Ghost Warrior" class="w-full h-full object-contain transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/1e293b/eab308?text=Ghost+Warrior'">
+                    <div class="absolute top-6 left-6 bg-slate-700 text-white text-[9px] font-black px-3 py-1 rounded-lg uppercase">Unit Terbatas</div>
+                </div>
+                <div class="p-8">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-500 transition">Ghost Warrior PCP 500cc</h3>
+                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">Popor kayu jati pilihan ergonomis. Power besar, cocok untuk berburu jarak jauh.</p>
+                    <div class="flex justify-between items-center border-t border-white/5 pt-6">
+                        <div>
+                            <p class="text-[9px] text-gray-500 uppercase font-black mb-1">Harga Unit</p>
+                            <p class="text-xl font-black text-yellow-500 font-mono tracking-tighter">Rp 5.250.000</p>
+                        </div>
+                        <a href="https://wa.me/628123456789" class="bg-yellow-500 text-slate-900 w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card group card-gradient border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-yellow-500/50 shadow-2xl animate-fade" style="animation-delay: 0.3s;">
+                <div class="relative h-64 bg-slate-800/50 p-6 flex items-center justify-center">
+                    <img src="img/bocap-carbon.png" alt="Bocap Carbon" class="w-full h-full object-contain transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/1e293b/eab308?text=Bocap+Carbon'">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-500 transition">Bocap Carbon Zalfa 360cc</h3>
+                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">Botol komposit sangat ringan. Sangat nyaman dibawa trekking lama di hutan.</p>
+                    <div class="flex justify-between items-center border-t border-white/5 pt-6">
+                        <div>
+                            <p class="text-[9px] text-gray-500 uppercase font-black mb-1">Harga Unit</p>
+                            <p class="text-xl font-black text-yellow-500 font-mono tracking-tighter">Rp 6.800.000</p>
+                        </div>
+                        <a href="https://wa.me/628123456789" class="bg-yellow-500 text-slate-900 w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card group card-gradient border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-yellow-500/50 shadow-2xl animate-fade" style="animation-delay: 0.4s;">
+                <div class="relative h-64 bg-slate-800/50 p-6 flex items-center justify-center">
+                    <img src="img/uklik-zalfa.png" alt="Uklik Zalfa" class="w-full h-full object-contain transition-transform duration-500" onerror="this.src='https://via.placeholder.com/600x400/1e293b/eab308?text=Uklik+Special'">
+                </div>
+                <div class="p-8">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-yellow-500 transition">Uklik Zalfa Special Edition</h3>
+                    <p class="text-gray-400 text-xs mb-6 leading-relaxed">Unit pompa tangan legendaris. Laras kuningan OD 9, power stabil dan awet.</p>
+                    <div class="flex justify-between items-center border-t border-white/5 pt-6">
+                        <div>
+                            <p class="text-[9px] text-gray-500 uppercase font-black mb-1">Harga Unit</p>
+                            <p class="text-xl font-black text-yellow-500 font-mono tracking-tighter">Rp 1.250.000</p>
+                        </div>
+                        <a href="https://wa.me/628123456789" class="bg-yellow-500 text-slate-900 w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-12 bg-black border-t border-white/5 text-center">
+        <p class="text-yellow-500 font-bold mb-2">ZALFA SPORT</p>
+        <p class="text-gray-600 text-[10px] tracking-widest uppercase">© 2026 Kualitas Tanpa Kompromi.</p>
+    </footer>
+
+</body>
+</html>
