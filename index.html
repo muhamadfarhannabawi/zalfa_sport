@@ -100,28 +100,28 @@
 </head>
 <body>
 
-    <nav id="main-nav" class="fixed w-full py-6 px-6 z-[200] transition-all duration-300">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-xl font-sync tracking-[0.3em] text-yellow-500 relative z-[210]">
-                ZALFA<span class="text-white">SPORT</span>
-            </div>
-
-            <ul class="hidden lg:flex space-x-10 items-center text-[11px] font-bold uppercase tracking-[0.2em]">
-                <li><a href="#home" class="hover:text-yellow-500 transition text-white">Beranda</a></li>
-                <li><a href="senapan.html" class="hover:text-yellow-500 transition text-white">Koleksi</a></li>
-                <li>
-                    <a href="edukasi.html" class="flex items-center hover:text-yellow-500 transition text-white">
-                        Edukasi <span class="ml-2 bg-yellow-500 text-[9px] text-slate-900 px-2 py-0.5 rounded-full font-black animate-pulse">PRO</span>
-                    </a>
-                </li>
-                <li><a href="https://wa.me/628..." class="btn-premium text-white px-8 py-2.5 rounded-full font-black">Kontak</a></li>
-            </ul>
-
-            <button id="menu-btn" class="lg:hidden text-2xl text-yellow-500 focus:outline-none relative z-[210] p-2">
-                <i class="fas fa-bars" id="menu-icon"></i>
-            </button>
+   <nav id="main-nav" class="fixed w-full py-5 px-6 z-[200] transition-all duration-300">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="text-xl font-sync tracking-[0.2em] text-yellow-500 relative z-[210]">
+            ZALFA<span class="text-white">SPORT</span>
         </div>
-    </nav>
+
+        <button id="menu-btn" class="lg:hidden relative z-[210] flex items-center justify-center w-12 h-12 -mr-2 focus:outline-none" aria-label="Toggle Menu">
+            <div id="hamburger-icon" class="relative w-8 h-6">
+                <span class="absolute block w-full h-1 bg-yellow-500 rounded-full transition-all duration-300 top-0"></span>
+                <span class="absolute block w-full h-1 bg-yellow-500 rounded-full transition-all duration-300 top-1/2 -translate-y-1/2"></span>
+                <span class="absolute block w-full h-1 bg-yellow-500 rounded-full transition-all duration-300 bottom-0"></span>
+            </div>
+        </button>
+
+        <ul class="hidden lg:flex space-x-10 items-center text-[11px] font-bold uppercase tracking-[0.2em]">
+            <li><a href="#home" class="hover:text-yellow-500 transition text-white">Beranda</a></li>
+            <li><a href="senapan.html" class="hover:text-yellow-500 transition text-white">Koleksi</a></li>
+            <li><a href="edukasi.html" class="flex items-center hover:text-yellow-500 transition text-white">Edukasi <span class="ml-2 bg-yellow-500 text-[9px] text-slate-900 px-2 py-0.5 rounded-full font-black">PRO</span></a></li>
+            <li><a href="https://wa.me/628..." class="btn-premium text-white px-8 py-2.5 rounded-full font-black">Kontak</a></li>
+        </ul>
+    </div>
+</nav>
 
     <div id="mobile-menu" class="hidden overflow-y-auto">
         <ul class="space-y-6">
@@ -147,43 +147,21 @@
         </ul>
     </div>
 
-   <header id="home" class="px-6 text-center">
-    <div class="reveal relative z-10 active">
-        <span class="inline-block px-5 py-2 border border-yellow-500/30 rounded-full text-[11px] md:text-[12px] font-bold tracking-[0.4em] text-yellow-500 uppercase mb-8 backdrop-blur-md">
-            Ultimate Engineering
-        </span>
-        
-        <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-[110px] font-sync font-extrabold mb-8 leading-[1.05] uppercase tracking-tighter text-white text-glow">
-            PRECISION<br>
-            <span class="text-yellow-500">MASTERED</span>
-        </h1>
-        
-        <p class="max-w-xl mx-auto mb-12 text-base md:text-xl font-light leading-relaxed text-slate-200 px-2">
-            Menghadirkan unit senapan angin kelas dunia dengan akurasi yang telah teruji secara teknis untuk performa tanpa kompromi.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <a href="senapan.html" class="w-full sm:w-auto btn-premium text-white px-12 py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl">
-                Eksplor Koleksi
-            </a>
-            <a href="edukasi.html" class="w-full sm:w-auto border-2 border-white/20 text-white px-12 py-5 rounded-2xl font-bold uppercase tracking-widest text-sm transition backdrop-blur-sm">
-                Zalfa Academy
-            </a>
+    <header id="home" class="px-6 text-center">
+        <div class="reveal relative z-10 active">
+            <span class="inline-block px-5 py-1.5 border border-yellow-500/30 rounded-full text-[10px] font-bold tracking-[0.4em] text-yellow-500 uppercase mb-8 backdrop-blur-md">Ultimate Engineering</span>
+            <h1 class="text-5xl md:text-[100px] font-sync font-bold mb-6 leading-none uppercase tracking-tighter text-white text-glow">
+                PRECISION<br><span class="text-yellow-500">MASTERED</span>
+            </h1>
+            <p class="max-w-2xl mx-auto mb-12 text-lg md:text-xl font-light leading-relaxed text-slate-200">
+                Menghadirkan unit senapan angin kelas dunia dengan akurasi yang telah teruji secara teknis untuk performa tanpa kompromi.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="senapan.html" class="btn-premium text-white px-12 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl">Eksplor Koleksi</a>
+                <a href="edukasi.html" class="border-2 border-white/20 text-white hover:border-yellow-500 hover:text-yellow-500 px-12 py-4 rounded-2xl font-bold uppercase tracking-widest text-sm transition duration-300 backdrop-blur-sm">Zalfa Academy</a>
+            </div>
         </div>
-    </div>
-</header>
-
-<style>
-    /* Tambahkan ini di bagian <style> untuk memastikan teks tidak pecah */
-    h3 {
-        font-size: 1.25rem; /* Default mobile (20px) */
-    }
-    @media (min-width: 768px) {
-        h3 {
-            font-size: 1.5rem; /* Desktop (24px) */
-        }
-    }
-</style>
+    </header>
 
     <section class="py-32 container mx-auto px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">

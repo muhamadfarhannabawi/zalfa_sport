@@ -4,6 +4,7 @@
     --darker-bg: #020617;
     --glass-bg: rgba(15, 23, 42, 0.95);
     --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --gold-shadow: rgba(212, 175, 55, 0.3);
 }
 
 /* --- Base Setup --- */
@@ -13,78 +14,94 @@ body {
     color: #ffffff;
     line-height: 1.6;
     margin: 0;
+    -webkit-font-smoothing: antialiased; /* Membuat font terlihat lebih tajam */
 }
 
-/* --- Navigation (Tidak Terlalu Tipis) --- */
+/* --- Navigation (Penyempurnaan Area Sentuh) --- */
 .glass-nav {
     background: var(--glass-bg);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    padding: 15px 0; /* Ukuran pas untuk area sentuh */
+    padding: 12px 0; 
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    transition: var(--transition-smooth);
 }
 
-/* --- Card Perfection (Proporsional di HP) --- */
+/* Ukuran Navbar saat scroll (diatur via JS) */
+.nav-glass.py-3 {
+    padding: 8px 0 !important;
+    background: rgba(2, 6, 23, 0.98) !important;
+}
+
+/* --- Card Perfection (Proporsional & Efek Hover) --- */
 .product-card {
     background: linear-gradient(145deg, #1e293b, #0f172a);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 1.5rem; /* Sudut tidak terlalu tajam, tidak terlalu bulat */
+    border-radius: 1.5rem;
     overflow: hidden;
     transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
 }
 
-/* Agar di HP teks judul & harga mudah dibaca */
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold-premium);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
 .product-card h3 {
-    font-size: 1.15rem; /* Sedikit lebih besar agar tegas */
+    font-size: 1.15rem;
     margin-bottom: 8px;
     font-weight: 700;
+    padding: 0 20px;
 }
 
 .product-card p {
-    font-size: 0.9rem; /* Ukuran standar baca HP (tidak kekecilan) */
+    font-size: 0.9rem;
+    color: #94a3b8;
+    padding: 0 20px 20px 20px;
 }
 
-/* --- Container Adjustment --- */
-.container {
-    padding-left: 20px;
-    padding-right: 20px;
+/* --- Hamburger Menu Icon (Custom Spans) --- */
+#hamburger-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--gold-premium);
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
 }
 
-/* --- Media Queries Khusus HP (Max-width 768px) --- */
-@media (max-width: 768px) {
-    /* Mencegah Grid terlalu rapat */
-    .grid-cols-1 {
-        gap: 24px !important; /* Jarak antar kartu lebih lega ke bawah */
-    }
+#hamburger-icon span:nth-child(1) { top: 0px; }
+#hamburger-icon span:nth-child(2) { top: 10px; }
+#hamburger-icon span:nth-child(3) { top: 20px; }
 
-    /* Ukuran Hero Title di HP (Tidak terlalu raksasa, tidak kekecilan) */
-    h1 {
-        font-size: 2.5rem !important; 
-        line-height: 1.2;
-    }
-
-    /* Kartu Produk sedikit lebih lebar */
-    .product-card {
-        margin: 0 5px; 
-    }
-
-    /* Gambar Produk agar terlihat detail */
-    .product-card img {
-        height: 200px;
-        width: auto;
-        object-fit: contain;
-        padding: 15px;
-    }
+/* Animasi Menjadi Silang (X) */
+#menu-btn.open #hamburger-icon span:nth-child(1) {
+    top: 10px;
+    transform: rotate(135deg);
+}
+#menu-btn.open #hamburger-icon span:nth-child(2) {
+    opacity: 0;
+    left: -60px;
+}
+#menu-btn.open #hamburger-icon span:nth-child(3) {
+    top: 10px;
+    transform: rotate(-135deg);
 }
 
-/* --- Typography Glow --- */
+/* --- Typography & Elements --- */
 .gold-gradient-text {
     background: linear-gradient(to right, var(--gold-premium), var(--gold-bright));
     -webkit-background-clip: text;
@@ -92,28 +109,84 @@ body {
     font-weight: 800;
 }
 
-/* --- WhatsApp Button (Size for Thumb) --- */
+/* --- WhatsApp Float Optimization --- */
 .whatsapp-float {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    z-index: 9999;
-    width: 60px; /* Ukuran ideal jempol dewasa */
+    z-index: 999;
+    width: 60px;
     height: 60px;
     background-color: #22c55e;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    transition: var(--transition-smooth);
 }
 
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #16a34a;
+}
+
+/* --- Mobile Specific Optimization --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem !important;
+        letter-spacing: -1px;
+    }
+
+    /* Mencegah Grid terlalu rapat */
+    .grid {
+        gap: 20px !important;
+    }
+
+    .product-card img {
+        height: 180px;
+        width: 100%;
+        object-fit: contain;
+        padding: 20px;
+        background: rgba(255,255,255,0.03);
+    }
+
+    /* Mempercantik tampilan mobile menu agar full screen */
+    #mobile-menu {
+        backdrop-filter: blur(20px);
+        background: rgba(2, 6, 23, 0.98);
+    }
+
+    #mobile-menu ul li a {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        padding: 12px 0;
+        display: block;
+    }
+}
+
+/* --- Animations --- */
 .pulse-animation {
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-    70% { transform: scale(1.1); box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }

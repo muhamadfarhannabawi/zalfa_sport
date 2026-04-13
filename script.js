@@ -3,46 +3,84 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
+    const mainNav = document.getElementById('main-nav');
+    
     const katBtn = document.getElementById('katalog-toggle');
     const katList = document.getElementById('katalog-list');
     const katIcon = document.getElementById('katalog-icon');
 
     // --- 2. FUNGSI UTAMA (REUSABLE) ---
     const closeAllMenus = () => {
-        if (mobileMenu) mobileMenu.classList.add('hidden');
-        if (menuIcon) menuIcon.classList.replace('fa-times', 'fa-bars');
-        document.body.style.overflow = 'auto';
+        if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            // Jika Anda menggunakan span hamburger custom, hapus class 'open'
+            menuBtn.classList.remove('open'); 
+            // Jika menggunakan FontAwesome
+            if (menuIcon) menuIcon.className = 'fas fa-bars';
+            
+            document.body.style.overflow = 'auto';
+            
+            // Kembalikan navbar ke transparan jika di posisi paling atas
+            if (window.scrollY <= 50) {
+                mainNav.classList.remove('nav-glass', 'py-3');
+                mainNav.classList.add('py-5');
+            }
+        }
     };
 
     // --- 3. MENU MOBILE TOGGLE ---
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isHidden = mobileMenu.classList.contains('hidden');
+            const isOpening = mobileMenu.classList.toggle('hidden');
             
-            if (isHidden) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon?.classList.replace('fa-bars', 'fa-times');
-                document.body.style.overflow = 'hidden'; // Kunci scroll
+            // Toggle State: Jika isOpening false artinya menu sedang DIBUKA (karena toggle hidden)
+            if (!isOpening) {
+                // Saat Menu Terbuka
+                menuBtn.classList.add('open'); // Untuk animasi span
+                if (menuIcon) menuIcon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+                mainNav.classList.add('nav-glass');
             } else {
+                // Saat Menu Tertutup
                 closeAllMenus();
             }
         });
     }
 
-    // --- 4. KATALOG & SUB-MENU ACCORDION ---
-    // Toggle List Katalog Utama
+    // --- 4. NAV SCROLL EFFECT ---
+    window.addEventListener('scroll', () => {
+        const isMenuOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (window.scrollY > 50 || isMenuOpen) {
+            mainNav.classList.add('nav-glass', 'py-3');
+            mainNav.classList.remove('py-5');
+        } else {
+            mainNav.classList.remove('nav-glass', 'py-3');
+            mainNav.classList.add('py-5');
+        }
+    });
+
+    // --- 5. KATALOG & SUB-MENU ACCORDION ---
     if (katBtn && katList) {
-        katBtn.addEventListener('click', () => {
+        katBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             katList.classList.toggle('hidden');
-            katIcon?.classList.toggle('fa-plus');
-            katIcon?.classList.toggle('fa-minus');
+            
+            // Animasi Icon: Rotate atau ganti Plus/Minus
+            if (katIcon) {
+                if (katIcon.classList.contains('fa-chevron-down')) {
+                    katIcon.style.transform = katList.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                } else {
+                    katIcon.classList.toggle('fa-plus');
+                    katIcon.classList.toggle('fa-minus');
+                }
+            }
         });
     }
 
-    // Sub-Toggle (Panah Accordion untuk Detail Produk)
-    const subToggles = document.querySelectorAll('.sub-toggle');
-    subToggles.forEach(btn => {
+    // Sub-Toggle (Detail Produk di dalam Katalog)
+    document.querySelectorAll('.sub-toggle').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
             const parentLi = this.closest('li');
@@ -50,107 +88,41 @@ document.addEventListener('DOMContentLoaded', () => {
             const arrowIcon = this.querySelector('i');
 
             if (content) {
-                const isHidden = content.classList.contains('hidden');
-                
-                // Tutup sub-content lain yang sedang terbuka (Optional: Accordion Mode)
-                // document.querySelectorAll('.sub-content').forEach(el => el.classList.add('hidden'));
-
-                if (isHidden) {
-                    content.classList.remove('hidden');
-                    content.classList.add('grid');
-                    arrowIcon?.classList.add('rotate-180');
-                } else {
-                    content.classList.add('hidden');
-                    content.classList.remove('grid');
-                    arrowIcon?.classList.remove('rotate-180');
-                }
+                const isHidden = content.classList.toggle('hidden');
+                content.classList.toggle('grid', !isHidden);
+                arrowIcon?.classList.toggle('rotate-180', !isHidden);
             }
         });
     });
 
-    // --- 5. EVENT CLEANUP ---
-    // Tutup menu jika mengklik link biasa
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-    mobileLinks.forEach(link => {
+    // --- 6. EVENT CLEANUP & OUTSIDE CLICK ---
+    // Klik link otomatis tutup menu
+    document.querySelectorAll('.mobile-link, #mobile-menu a').forEach(link => {
         link.addEventListener('click', closeAllMenus);
     });
 
-    // Tutup menu jika user me-resize layar ke ukuran Desktop
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) { // 768px adalah breakpoint 'md' di Tailwind
-            closeAllMenus();
-        }
-    });
-
-    // Tutup menu jika klik di luar area menu (Click Outside)
+    // Tutup jika klik di luar area menu
     document.addEventListener('click', (e) => {
-        if (mobileMenu && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
             closeAllMenus();
         }
     });
 
-    // --- 6. REVEAL ANIMATION (INTERSECTION OBSERVER) ---
-    const revealOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    // Resize handling
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) { // Breakpoint LG Tailwind
+            closeAllMenus();
+        }
+    });
 
+    // --- 7. REVEAL ANIMATION (INTERSECTION OBSERVER) ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Berhenti mengamati setelah elemen muncul (opsional agar animasi tidak berulang)
-                // observer.unobserve(entry.target); 
             }
         });
-    }, revealOptions);
+    }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const mainNav = document.getElementById('main-nav');
-    const katalogToggle = document.getElementById('katalog-toggle');
-
-    // Toggle Mobile Menu
-    menuBtn.addEventListener('click', () => {
-        const isHidden = mobileMenu.classList.toggle('hidden');
-        
-        // Animasi Icon
-        menuIcon.className = isHidden ? 'fas fa-bars' : 'fas fa-times';
-        
-        // Lock Scroll agar tidak bisa di scroll saat menu buka
-        document.body.style.overflow = isHidden ? 'auto' : 'hidden';
-        
-        // Paksa navbar jadi gelap saat menu dibuka (agar tombol terlihat)
-        if(!isHidden) {
-            mainNav.classList.add('nav-glass');
-        } else if (window.scrollY <= 50) {
-            mainNav.classList.remove('nav-glass');
-        }
-    });
-
-    // Perbaikan pada Scroll Event
-    window.addEventListener('scroll', () => {
-        // Jika menu sedang terbuka, jangan hapus background navigasi
-        if (window.scrollY > 50 || !mobileMenu.classList.contains('hidden')) {
-            mainNav.classList.add('nav-glass', 'py-3'); // Mengecilkan padding saat scroll
-            mainNav.classList.remove('py-5');
-        } else {
-            mainNav.classList.remove('nav-glass', 'py-3');
-            mainNav.classList.add('py-5');
-        }
-    });
-    
-    // Klik link di mobile menu otomatis tutup menu
-    document.querySelectorAll('.mobile-link, #katalog-list a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            menuIcon.className = 'fas fa-bars';
-            document.body.style.overflow = 'auto';
-        });
-    });
 });
