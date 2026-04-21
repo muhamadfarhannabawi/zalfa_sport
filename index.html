@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zalfa Sport | High-End Air Rifle</title>
+    <title>Zalfa Sport | High-End Air Rifle & Service Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Syncopate:wght@700&display=swap" rel="stylesheet">
@@ -49,7 +49,7 @@
             padding-bottom: 1rem !important;
         }
 
-        /* --- Hero Background Gambar Toko --- */
+        /* --- Hero Background --- */
         #home {
             position: relative;
             min-height: 100vh;
@@ -63,7 +63,6 @@
             background-attachment: fixed; 
         }
 
-        /* Overlay Gelap agar teks terbaca */
         #home::before {
             content: '';
             position: absolute;
@@ -98,27 +97,27 @@
         #mobile-menu.active { display: flex; }
 
         /* --- Tombol WA Melayang --- */
-.whatsapp-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-.pulse-animation {
-    animation: pulse-green 2s infinite;
-}
+        .pulse-animation {
+            animation: pulse-green 2s infinite;
+        }
 
-@keyframes pulse-green {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-    70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-}
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
     </style>
 </head>
 <body>
@@ -140,8 +139,9 @@
         <ul class="hidden lg:flex space-x-10 items-center text-[11px] font-bold uppercase tracking-[0.2em]">
             <li><a href="#home" class="hover:text-yellow-500 transition text-white">Beranda</a></li>
             <li><a href="senapan.html" class="hover:text-yellow-500 transition text-white">Koleksi</a></li>
+            <li><a href="#services" class="hover:text-yellow-500 transition text-white">Servis</a></li>
             <li><a href="edukasi.html" class="flex items-center hover:text-yellow-500 transition text-white">Edukasi <span class="ml-2 bg-yellow-500 text-[9px] text-slate-900 px-2 py-0.5 rounded-full font-black">PRO</span></a></li>
-            <li><a href="https://wa.me/628..." class="btn-premium text-white px-8 py-2.5 rounded-full font-black">Kontak</a></li>
+            <li><a href="https://wa.me/6287804499888" class="btn-premium text-white px-8 py-2.5 rounded-full font-black">Kontak</a></li>
         </ul>
     </div>
 </nav>
@@ -162,10 +162,11 @@
                     <li><a href="teleskop.html" class="mobile-link block text-xl py-1">Teleskop</a></li>
                 </ul>
             </li>
+            
             <li><a href="edukasi.html" class="mobile-link block text-2xl font-bold text-white border-b border-slate-800 pb-2">Edukasi</a></li>
             <li><a href="tentang_kami.html" class="mobile-link block text-2xl font-bold text-white border-b border-slate-800 pb-2">Tentang Kami</a></li>
             <li class="pt-6">
-                <a href="https://wa.me/628..." class="block btn-premium text-white text-center py-4 rounded-2xl font-black uppercase text-lg shadow-lg">WhatsApp Kami</a>
+                <a href="https://wa.me/6287804499888" class="block btn-premium text-white text-center py-4 rounded-2xl font-black uppercase text-lg shadow-lg">WhatsApp Kami</a>
             </li>
         </ul>
     </div>
@@ -177,39 +178,47 @@
                 PRECISION<br><span class="text-yellow-500">MASTERED</span>
             </h1>
             <p class="max-w-2xl mx-auto mb-12 text-lg md:text-xl font-light leading-relaxed text-slate-200">
-                Menghadirkan unit senapan angin kelas dunia dengan akurasi yang telah teruji secara teknis untuk performa tanpa kompromi.
+                Menghadirkan unit senapan angin kelas dunia dan layanan perbaikan profesional dengan akurasi yang telah teruji secara teknis.
             </p>
             <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
                 <a href="senapan.html" class="btn-premium text-white px-12 py-4 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl">Eksplor Koleksi</a>
-                <a href="edukasi.html" class="border-2 border-white/20 text-white hover:border-yellow-500 hover:text-yellow-500 px-12 py-4 rounded-2xl font-bold uppercase tracking-widest text-sm transition duration-300 backdrop-blur-sm">Zalfa Academy</a>
+                <a href="#services" class="border-2 border-white/20 text-white hover:border-yellow-500 hover:text-yellow-500 px-12 py-4 rounded-2xl font-bold uppercase tracking-widest text-sm transition duration-300 backdrop-blur-sm">Layanan Servis</a>
             </div>
         </div>
     </header>
 
-    <section class="py-32 container mx-auto px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass-card p-12 rounded-[2.5rem] reveal">
-                <div class="w-16 h-16 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-2xl mb-8 border border-yellow-500/20">
+    <section id="services" class="py-32 container mx-auto px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass-card p-10 rounded-[2.5rem] reveal">
+                <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-xl mb-6 border border-yellow-500/20">
                     <i class="fas fa-crosshairs"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-4 uppercase font-sync text-white tracking-tight">Match Grade</h3>
-                <p class="text-slate-400 leading-relaxed">Setiap unit melewati tahap tuning manual profesional untuk memastikan deviasi FPS minimum.</p>
+                <h3 class="text-lg font-bold mb-4 uppercase font-sync text-white tracking-tight">Match Grade</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Setiap unit melewati tahap tuning manual profesional untuk memastikan deviasi FPS minimum.</p>
             </div>
 
-            <div class="glass-card p-12 rounded-[2.5rem] reveal" style="transition-delay: 150ms;">
-                <div class="w-16 h-16 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-2xl mb-8 border border-yellow-500/20">
+            <div class="glass-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 200ms;">
+                <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-xl mb-6 border border-yellow-500/20">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-4 uppercase font-sync text-white tracking-tight">Pro Service</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Menerima servis besar, kebocoran, hingga setting akurasi/power oleh teknisi ahli berpengalaman.</p>
+            </div>
+
+            <div class="glass-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 200ms;">
+                <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-xl mb-6 border border-yellow-500/20">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-4 uppercase font-sync text-white tracking-tight">Garansi Resmi</h3>
-                <p class="text-slate-400 leading-relaxed">Dukungan purna jual penuh dan ketersediaan suku cadang original untuk menjaga kondisi unit tetap prima.</p>
+                <h3 class="text-lg font-bold mb-4 uppercase font-sync text-white tracking-tight">Garansi</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Dukungan purna jual penuh dan ketersediaan suku cadang original untuk menjaga kondisi unit tetap prima.</p>
             </div>
 
-            <div class="glass-card p-12 rounded-[2.5rem] reveal" style="transition-delay: 300ms;">
-                <div class="w-16 h-16 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-2xl mb-8 border border-yellow-500/20">
+            <div class="glass-card p-10 rounded-[2.5rem] reveal" style="transition-delay: 300ms;">
+                <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center text-yellow-500 text-xl mb-6 border border-yellow-500/20">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-4 uppercase font-sync text-white tracking-tight">Academy PRO</h3>
-                <p class="text-slate-400 leading-relaxed">Akses eksklusif ke modul perawatan mendalam dan teknik menembak jarak jauh untuk pemilik unit.</p>
+                <h3 class="text-lg font-bold mb-4 uppercase font-sync text-white tracking-tight">Academy</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Akses eksklusif ke modul perawatan mendalam dan teknik menembak jarak jauh bagi pelanggan.</p>
             </div>
         </div>
     </section>
@@ -219,7 +228,7 @@
         <p class="text-gray-600 text-[10px] tracking-widest uppercase">© 2026 Akurasi Adalah Kunci.</p>
     </footer>
 
-    <a href="https://wa.me/6287804499888?text=Halo%20Zalfa%20Sport,%20saya%20tertarik%20dengan%20produk%20yang%20anda%20tawarkan" 
+    <a href="https://wa.me/6287804499888?text=Halo%20Zalfa%20Sport,%20saya%20ingin%20tanya%20mengenai%20unit/servis%20senapan" 
    class="whatsapp-float pulse-animation bg-green-500 w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition-transform active:scale-95"
    target="_blank"
    aria-label="Chat WhatsApp">
@@ -230,7 +239,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            const menuIcon = document.getElementById('menu-icon');
             const mainNav = document.getElementById('main-nav');
             const katalogToggle = document.getElementById('katalog-toggle');
 
@@ -238,8 +246,19 @@
             menuBtn.addEventListener('click', () => {
                 const isActive = mobileMenu.classList.toggle('active');
                 mobileMenu.classList.toggle('hidden');
-                menuIcon.className = isActive ? 'fas fa-times' : 'fas fa-bars';
                 document.body.style.overflow = isActive ? 'hidden' : 'auto';
+                
+                // Animasi Hamburger sederhana
+                const spans = menuBtn.querySelectorAll('span');
+                if(isActive) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
             });
 
             // Close menu on link click
@@ -247,7 +266,6 @@
                 link.addEventListener('click', () => {
                     mobileMenu.classList.remove('active');
                     mobileMenu.classList.add('hidden');
-                    menuIcon.className = 'fas fa-bars';
                     document.body.style.overflow = 'auto';
                 });
             });
@@ -282,8 +300,6 @@
 
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         });
-
-        
     </script>
 </body>
 </html>
